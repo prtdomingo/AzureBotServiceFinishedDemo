@@ -60,7 +60,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     // handle proactive Message from function
                     log.Info("Trigger start");
                     IEventActivity triggerEvent = activity;
-                    var message = JsonConvert.DeserializeObject<Message>(((JObject) triggerEvent.Value).GetValue("message").ToString());
+                    var message = JsonConvert.DeserializeObject<Message>(((JObject) triggerEvent.Value).GetValue("Message").ToString());
                     var messageactivity = (Activity)message.RelatesTo.GetPostToBotMessage();
                     
                     client = new ConnectorClient(new Uri(messageactivity.ServiceUrl));
